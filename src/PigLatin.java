@@ -5,14 +5,14 @@ import java.util.Scanner;
  */
 public class PigLatin {
     public static void main(String[] args) {
-        String word;
-        String vowels = "aeiou";
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a word: ");
-
-        word = sc.next();
-
-        for
-        word.split()
+//        String word;
+//        String vowels = "aeiou";
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Enter a word: ");
+//
+//        word = sc.next();
+//
+//        for
+//        word.split()
     }
 }
