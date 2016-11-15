@@ -32,6 +32,7 @@ public class ConsoleIo {
         System.out.println("Your second word is " + secondWord);
         System.out.println("Your third word is " + thirdWord);
 
+
         double length, width;
         length = 0;
         width = 0;
