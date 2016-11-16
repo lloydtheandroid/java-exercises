@@ -1,3 +1,5 @@
+import com.sun.javaws.exceptions.InvalidArgumentException;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
@@ -6,58 +8,72 @@ import java.util.Scanner;
 public class ExceptionAndErrorHandling {
     public static void main(String[] args) {
 
-        String name = "";
-        int age = 0;
-        String why = "";
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
+        String name = getStudentName(input);
+        int age = getStudentAge(input);
+        String why = getStudentWhy(input);
 
 
-        System.out.println("Name is " + getStudentName(name));
-        System.out.println("Age is " + getStudentAge(age));
-        System.out.println("Reason for school is " + getStudentWhy(why));
+        System.out.println("Name is " + name);
+        System.out.println();
+        System.out.println("Age is " + age);
+        System.out.println();
+        System.out.println("Reason for school is " + why);
+        System.out.println();
+
+        System.out.println("Do you want to enter another student? (y/n)");
+        String newStudent = input.next();
+        if (newStudent.equalsIgnoreCase("y")) {
+            main(null);
+        }
     }
-    public static String getStudentName(String studentName) {
+    public static String getStudentName(Scanner input) {
 
-        Scanner sc = new Scanner(System.in);
-
+        String studentName;
         try {
             System.out.print("What is the student's Name? ");
-            studentName = sc.next();
-        } catch (InputMismatchException e) {
-            sc.next();  // discard the incorrectly entered value
-            System.out.println("Error! Invalid Name. Try again.\n");
+            studentName = input.next();
+            if (studentName.trim().isEmpty()){
+                throw new IllegalArgumentException("Name cannot be blank");
+            } return studentName;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getStudentName(input);
         }
-        System.out.println(); // Blank line for formatting
-        return studentName;
     }
-    public static int getStudentAge(int studentsAge) {
-
-        Scanner sc = new Scanner(System.in);
+    public static int getStudentAge(Scanner input) {
 
         try {
             System.out.print("What is the student's Age? ");
-            studentsAge = sc.nextInt();
-        } catch (InputMismatchException e) {
-            sc.next(); // discard the incorrectly entered value
-            System.out.println("Error! Please enter a whole number. Try again.\n");
-        }
-        System.out.println(); // Blank line for formatting
-        return studentsAge;
-    }
-    public static String getStudentWhy(String studentWhy) {
+            int age = input.nextInt();
+            if(age < 0) {
+                throw new IllegalArgumentException ("Age must be a positive number");
+            }
+            return age;
 
-        Scanner sc = new Scanner(System.in);
+        } catch (InputMismatchException e) {
+            input.next(); // discard the incorrectly entered value
+            System.out.println("Error! Please enter a whole number. Try again.\n");
+            return getStudentAge(input);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getStudentAge(input);
+        }
+    }
+    public static String getStudentWhy(Scanner input) {
 
         try {
             System.out.println("Why does the student want to learn programming? ");
-            studentWhy = sc.nextLine();
-            if (studentWhy.equalsIgnoreCase("")){
-                getStudentWhy(studentWhy);
-            }
+            String studentWhy = input.next();
+            if (studentWhy.isEmpty()){
+                throw new IllegalArgumentException("You reason cannot be empty");
+            }return studentWhy;
 
-        } catch (InputMismatchException e) {
-            sc.next(); // discard the incorrectly entered value
-            System.out.println("Error! Please enter a sentence. Try again.\n");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getStudentWhy(input);
         }
-        return studentWhy;
     }
 }
+
