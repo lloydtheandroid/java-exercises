@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class MedicalRecordApp {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
-        MedicalRecord newPerson = new MedicalRecord(input);
+//        Scanner input = new Scanner(System.in);
+//        MedicalRecord newPerson = new MedicalRecord(input);
     }
 }
