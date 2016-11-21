@@ -7,7 +7,7 @@ public class ServerNameGenerator {
     public static void main(String[] args) {
         String[] firstName = {"Dirk", "Tango", "Squanchy", "Jesus", "Dude", "Turbo", "Django", "Rambo", "Mufassa", "Doctor"};
         String[] lastName = {"Diggler", "McNugget", "Masters", "DeJesus", "Randerson", "Slamberson", "Frenchfry", "Rainbow", "Hogswoggle", "Killmore"};
-        Scanner sc = Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         String userInput;
 
 
@@ -17,8 +17,9 @@ public class ServerNameGenerator {
             userInput = sc.next();
         }
         while (userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("y"));
+        sc.close();
     }
     public static int randomNumber(){
-        return (int) Math.ceil(Math.random() * 10);
+        return (int) Math.ceil(Math.random() * 10 -1);
     }
 }
