@@ -1,39 +1,45 @@
 /**
  * Created by lloyd on 11/16/16.
  */
-import java.util.Scanner;
 
-
-// Class //
 public class MedicalRecord {
 
-    //Fields//
-
+    //Fields
     public String name;
     public int age;
     public String gender;
     public String ssn;
 
-    //Constructor//
-
-    public MedicalRecord(String newName, int newAge, String newGender, String newSSN) {
-        name = newName;
-        age = newAge;
-        gender = newGender;
-        ssn = newSSN;
+    public String getName() {
+        return name;
     }
 
-    // Methods //
-    public void setName(String newValue) {
-        name = newValue;
+    public void setName(String name) {
+        this.name = name;
     }
-    public void setAge(int newValue) {
-        age = newValue;
+
+    public int getAge() {
+        return age;
     }
-    public void setGender(String newValue) {
-        gender = newValue;
+
+    public void setAge(int age) {
+        this.age = age;
     }
-    public void setSSN(String newValue) {
-        ssn = newValue;
+
+    public String getGender() {
+        return gender;
     }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
 }
