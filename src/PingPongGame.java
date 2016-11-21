@@ -37,6 +37,7 @@ public class PingPongGame {
         } else {
             System.out.println("CPU won!!!");
         }
+        input.close();
     }
 
     private static boolean isWinner(int playerScore) {
@@ -56,8 +57,7 @@ public class PingPongGame {
 
     private static void showScores(int playerScore, int cpuScore) {
         System.out.println(
-                "Player score is " + playerScore
-                        + ", CPU score is " + cpuScore
+                "Player score is " + playerScore + ", CPU score is " + cpuScore
         );
     }
 

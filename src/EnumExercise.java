@@ -28,36 +28,26 @@ import java.util.Scanner;
 public class EnumExercise {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        double customerTotal = 0;
-        int discount = randomNumber();
 
-
-        System.out.print("What is the total?");
-        customerTotal = sc.nextDouble();
-
-        System.out.println(customerTotal);
-        System.out.println(discount);
-        System.out.println("Your Discount is " + getDiscount());
 
     }
-    public static int randomNumber(){
-        return (int) Math.ceil(Math.random() * 7);
-    }
-    public static DiscountColor getDiscount(DiscountColor color){
-        color = randomNumber()
-        switch (color){
-            case 1 : RED;
-                break;
-            case 2 : BLUE;
-                break;
-            case 3 : GREEN;
-                break;
-            case 4 : PURPLE;
-                break;
-            case 5 : PINK;
-                break;
+    public static double convertColorToDiscount(String color){
+        if (color.equalsIgnoreCase("RED")){
+            return (double) 1;
+        }else if (color.equalsIgnoreCase("BLUE")){
+            return .9;
+        }if (color.equalsIgnoreCase("YELLOW")){
+            return .75;
+        }if (color.equalsIgnoreCase("GREEN")){
+            return .65;
+        }if (color.equalsIgnoreCase("PURPLE")){
+            return .50;
+        }else {
+            return 0;
         }
-        return color;
     }
 }
+
+
+
+

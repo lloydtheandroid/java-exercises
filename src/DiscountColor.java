@@ -15,7 +15,9 @@ public enum DiscountColor {
         this.discount = discount;
     }
 
-    public double getDiscount() {
-        return discount;
+    public double getDiscount(double payment) {
+        double totalDiscount;
+        totalDiscount = payment * this.discount;
+        return totalDiscount;
     }
 }
