@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,11 +16,10 @@ public class Student {
     String lastName;
     int score;
 
-    //constructor is function that is called the returns a new object
-
     public Student(String firstName, String lastName, int score) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.score = score;
+
     }
 }
