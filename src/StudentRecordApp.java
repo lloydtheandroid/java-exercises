@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -6,56 +8,42 @@ import java.util.Scanner;
  */
 public class StudentRecordApp {
     public static void main(String[] args) {
+
         ArrayList<Student> students = new ArrayList<>();
 
-        Student jb = new Student("John", "Brown", 98);
-        Student bj = new Student("Ben", "Jonson", 68);
-        Student sd = new Student("Sam", "Davis", 78);
+        Scanner sc = new Scanner(System.in).useDelimiter("\n");
+        String addAnotherStudent;
+        String firstName;
+        String lastName;
+        int score;
 
-        students.add(jb);
-        students.add(bj);
-        students.add(sd);
+        do {
+            System.out.print("Please enter Student's first name : ");
+            firstName = sc.next();
+            System.out.print("Please enter Student's last name: ");
+            lastName = sc.next();
+            System.out.print("Please enter Student's score: ");
+            score = sc.nextInt();
+            students.add(new Student(firstName, lastName, score));
 
+            System.out.println("Do you want to add another Student yes/no?");
+            addAnotherStudent= sc.next();
+
+        } while (addAnotherStudent.equals("y"));
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student student2, Student student1)
+            {
+
+                return  student1.lastName.compareTo(student2.lastName);
+            }
+        });
+        System.out.println("Students are" + students);
         for(Student student : students) {
-            System.out.println(student.firstName + " " + student.lastName + " score is: " + student.score);
+        System.out.println(student.lastName + " " + student.firstName + " Score is: " + student.score);
         }
-
-
-
-//        //constructor is function that is called the returns a new object
-//
-//
-//
-//            ArrayList<Student> students = new ArrayList<>();
-//
-//            //prompt user for input
-//            //how many students
-//            //then instantiate or create that many student objects
-//
-//            System.out.println("Welcome to the student records application");
-//            do {
-//
-//
-//                // create the student object
-//                System.out.print("Please input the student's first name: ");
-//                firstName = sc.next();
-//
-//                System.out.print("Please input the student's last name: ");
-//                lastName = sc.next();
-//
-//                System.out.println("Please input that student's score: ");
-//                score = sc.nextInt();
-//
-//                // create a new student object to hold the data for a single student.
-//                Student newStudent = new Student(firstName, lastName, score);
-//
-//                // put the newStudent object onto the ArrayList
-//                students.add(newStudent);
-//
-//                System.out.print("Do you want to add another student? ");
-//                addMoreStudents = sc.next();
-//
-//
-//            } while (addMoreStudents.equalsIgnoreCase("y"));
     }
 }
+
+
+
