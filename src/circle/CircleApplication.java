@@ -1,53 +1,32 @@
 package circle;
 
-import java.util.Scanner;
-import validation.DoubleInRange;
-import java.io.PrintStream;
-import console.Console;
-import validation.NonEmptyString;
-
-
-/**
- * Created by lloyd on 11/30/16.
- */
+import validation.Validator;
 public class CircleApplication {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in).useDelimiter("\n");
-        PrintStream output = System.out;
-        Console console = new Console(sc, output);
-        String anotherCircle;
+
+        String userWantsToContinue = "n";
+
+        System.out.println("Welcome to the Circle calculating application!");
+        System.out.println("So far, you have created " + Circle.getNumberOfCirclesProduced() + " circles.");
 
         do {
-            double radius = console.askForDouble(
-                    "Please enter a radius between 1 and 1000: ",
-                    new DoubleInRange(0, 1000)
-            );
+            // prompt user to enter a circle radius
+            // Display an error if the user enters invalid data.
+            double radius = Validator.getPositiveDouble("What's the radius? ");
 
             Circle circle = new Circle(radius);
+            System.out.println("Your circle's area is " + circle.getFormattedArea());
 
-            output.println("Your input radius is: " + radius);
+            System.out.println("Your circle's circumference is " + circle.getFormattedCircumference());
 
-            output.print("The circumference of the circle is: ");
+            // Ask if the user wants to continue.
+            userWantsToContinue = Validator.getString("Do you want to continue y/n? ");
 
-            output.printf("%.2f%n", +circle.getCircumference(radius));
-            output.println();
-            output.print("The area of the circle is: ");
-            output.printf("%.2f%n", +circle.getArea(radius));
+        } while(userWantsToContinue.equalsIgnoreCase("y") || userWantsToContinue.equalsIgnoreCase("yes"));
 
-            anotherCircle = console.askForText(
-                    "Do you want to calculate another circle? (y/n): ",
-                    new NonEmptyString()
-            );
-
-        }while (anotherCircle.equalsIgnoreCase("y"));
-
-
-//        System.out.println("The circumference is " + circumference);
-//
-//        System.out.println("The area of the circle is " + area);
-
-
-
-
+        // show how many circles the user created using the application
+        System.out.println("You have produced " + Circle.getNumberOfCirclesProduced() + " circles, yay!");
+        System.out.println("Goodbye");
     }
+
 }
