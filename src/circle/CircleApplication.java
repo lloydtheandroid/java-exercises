@@ -4,7 +4,7 @@ import validation.Validator;
 public class CircleApplication {
     public static void main(String[] args) {
 
-        String userWantsToContinue = "n";
+        String userWantsToContinue;
 
         System.out.println("Welcome to the Circle calculating application!");
         System.out.println("So far, you have created " + Circle.getNumberOfCirclesProduced() + " circles.");
