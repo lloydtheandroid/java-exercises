@@ -1,6 +1,6 @@
 package circle;
 
-import validation.Validator;
+import revalidation.Validator;
 public class CircleApplication {
     public static void main(String[] args) {
 

@@ -3,7 +3,7 @@
  */
 package console;
 
-import validation.Validation;
+import revalidation.Validation;
 
 import java.io.PrintStream;
 import java.util.Scanner;

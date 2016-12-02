@@ -28,26 +28,40 @@ import java.util.Scanner;
 public class EnumExercise {
     public static void main(String[] args) {
 
+        double payment;
+        double discount;
+        String discountInformation;
 
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input your total before the discount: ");
+        payment = sc.nextDouble();
 
-    }
-    public static double convertColorToDiscount(String color){
-        if (color.equalsIgnoreCase("RED")){
-            return (double) 1;
-        }else if (color.equalsIgnoreCase("BLUE")){
-            return .9;
-        }if (color.equalsIgnoreCase("YELLOW")){
-            return .75;
-        }if (color.equalsIgnoreCase("GREEN")){
-            return .65;
-        }if (color.equalsIgnoreCase("PURPLE")){
-            return .50;
-        }else {
-            return 0;
+        // Get a random number between 1 and 6 (inclusive)
+        int random = (int) Math.ceil(Math.random() * 6);
+
+        if(random == 1) {
+            discount = DiscountColor.RED.applyDiscount(payment);
+        } else if(random == 2) {
+            discount = DiscountColor.BLUE.applyDiscount(payment);
+        } else if(random == 3) {
+            discount = DiscountColor.YELLOW.applyDiscount(payment);
+        } else if(random == 4) {
+            discount = DiscountColor.GREEN.applyDiscount(payment);
+        } else if (random == 5) {
+            discount = DiscountColor.PURPLE.applyDiscount(payment);
+        } else {
+            discount = DiscountColor.PINK.applyDiscount(payment);
         }
+
+        discountInformation = outputDiscount(payment, discount);
+
+        System.out.println(discountInformation);
+
+        sc.close();
+    }
+
+    protected static String outputDiscount(double payment, double discount) {
+        double total = payment - discount;
+        return "The discount for $" + payment + " is $" + discount + " for a grand total of $" + total;
     }
 }
-
-
-
-
